@@ -387,7 +387,7 @@ class Viewer:
                     s = ""
                 else:
                     s = str(self.header[xp])
-                s = s.ljust(15)[0:15]
+                s = s.ljust(self.column_width)[0:self.column_width]
                 # Note: the string is offset right by 1 space in each
                 # column to ensure the whole string is reverse video.
                 self.scr.addstr(2, x * self.column_width, " {}".format(s),
@@ -405,7 +405,7 @@ class Viewer:
                     s = ""
                 else:
                     s = str(self.data[yp][xp])
-                s = s.ljust(15)[0:15]
+                s = s.ljust(self.column_width)[0:self.column_width]
                 if x == self.x and y == self.y:
                     self.scr.attrset(curses.A_REVERSE)
                 # Note: the string is offset right by 1 space in each
