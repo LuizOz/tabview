@@ -302,13 +302,13 @@ class Viewer:
             # for a valid keypress
             self.scr.move(self.y + self.header_offset,
                           self.x * self.column_width)
-            self.handle_keys()
+            c = self.scr.getch()  # Get a keystroke
+            self.handle_keys(c)
 
-    def handle_keys(self):
+    def handle_keys(self, c):
         """Determine what method to call for each keypress.
 
         """
-        c = self.scr.getch()  # Get a keystroke
         if 0 < c < 256:
             c = chr(c)
         # Digits are commands without a modifier
