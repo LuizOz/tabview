@@ -351,13 +351,13 @@ class Viewer:
             # Ignore illegal keys
             self.modifier = str()
 
-    def display(self):
+    def display(self, title=""):
         """Refresh the current display"""
         # Print the current cursor cell in the top left corner
         self.scr.move(0, 0)
         self.scr.clrtoeol()
-        self.scr.addstr(0, 0, "  {}  ".format(
-                        self.yx2str(self.y + self.win_y, self.x + self.win_x)),
+        self.scr.addstr(0, 0, "  {}  {}".format(
+                        (self.yx2str(self.y + self.win_y, self.x + self.win_x)), title),
                         curses.A_REVERSE)
 
         # Adds the current cell content after the 'current cell' display
