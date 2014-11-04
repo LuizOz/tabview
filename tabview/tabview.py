@@ -351,7 +351,7 @@ class Viewer:
             # Ignore illegal keys
             self.modifier = str()
 
-    def display(self, title=""):
+    def display(self, title="", stats=""):
         """Refresh the current display"""
         # Print the current cursor cell in the top left corner
         self.scr.move(0, 0)
@@ -367,9 +367,12 @@ class Viewer:
             s = ""
         else:
             s = str(self.data[yp][xp])
-        self.scr.move(0, 20)
+        self.scr.move(0, 33)
         self.scr.clrtoeol()
-        self.scr.addstr(s[0: self.max_x - 20], curses.A_NORMAL)
+        self.scr.addstr(s[0: self.max_x - 33], curses.A_NORMAL)
+
+        self.scr.move(0, self.max_x - 100)
+        self.scr.addstr(stats, curses.A_NORMAL)
 
         # Print a divider line
         self.scr.move(1, 0)
