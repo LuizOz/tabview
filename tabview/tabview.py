@@ -371,7 +371,10 @@ class Viewer:
         self.scr.clrtoeol()
         self.scr.addstr(s[0: self.max_x - 33], curses.A_NORMAL)
 
-        self.scr.move(0, self.max_x - 100)
+        try:
+            self.scr.move(0, self.max_x - 140)
+        except:
+            raise RuntimeError("Please, increase terminal width")
         self.scr.addstr(stats, curses.A_NORMAL)
 
         # Print a divider line
